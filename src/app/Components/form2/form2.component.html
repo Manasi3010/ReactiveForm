@@ -1,0 +1,92 @@
+<mat-horizontal-stepper orientation="vertical" #stepper>
+  <!-- <mat-step [stepControl]="StudentForm" [completed]="complete"> -->
+  <form [formGroup]="user" (ngSubmit)="saveInfo()">
+    <mat-step
+      [stepControl]="user.controls['info']"
+      [completed]="user.get('info').valid"
+    >
+      <ng-template matStepperIcon="edit">
+        <mat-icon>person</mat-icon>
+      </ng-template>
+      <ng-template matStepLabel>UserDetails</ng-template>
+      <app-user-info FormGroupName="info"></app-user-info>
+      <div class="footer">
+        <button color="accent" class="nextbtn" mat-raised-button matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step
+      [stepControl]="user.controls['address']"
+      [completed]="user.get('address').valid"
+    >
+      <ng-template matStepperIcon="edit">
+        <mat-icon>person</mat-icon>
+      </ng-template>
+      <ng-template matStepLabel>AddressDetails</ng-template>
+      <app-useraddress FormGroupName="address"></app-useraddress>
+      <div class="footer">
+        <button
+          color="accent"
+          class="nextbtn"
+          mat-raised-button
+          matStepperPrevious
+        >
+          Back
+        </button>
+        <button color="accent" class="nextbtn" mat-raised-button matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step
+      [stepControl]="user.controls['company']"
+      [completed]="user.get('company').valid"
+    >
+      <ng-template matStepperIcon="edit">
+        <mat-icon>person</mat-icon>
+      </ng-template>
+      <ng-template matStepLabel>CompanyDetails</ng-template>
+      <app-user-company FormGroupName="company"></app-user-company>
+      <div class="footer">
+        <button
+          color="accent"
+          class="nextbtn"
+          mat-raised-button
+          matStepperPrevious
+        >
+          Back
+        </button>
+        <button color="accent" class="nextbtn" mat-raised-button matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step
+      [stepControl]="user.controls['bank']"
+      [completed]="user.get('bank').valid"
+    >
+      <ng-template matStepperIcon="edit">
+        <mat-icon>person</mat-icon>
+      </ng-template>
+      <ng-template matStepLabel>BankDetails</ng-template>
+      <app-user-company FormGroupName="bank"></app-user-company>
+      <div class="footer">
+        <button
+          color="accent"
+          class="nextbtn"
+          mat-raised-button
+          matStepperPrevious
+        >
+          Back
+        </button>
+        <button color="accent" class="nextbtn" mat-raised-button matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
+  </form>
+  <mat-step>
+    <ng-template matStepLabel>SubmitedInfo</ng-template>
+  </mat-step>
+</mat-horizontal-stepper>

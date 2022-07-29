@@ -1,0 +1,106 @@
+<mat-card style="width: 100%; height: auto">
+  <mat-card-title style="text-align: center">Contact Details</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="ContactInfo">
+      <ng-container>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label>Student Mobile Number</mat-label>
+              <input
+                type="tel"
+                matInput
+                name="studentmobile"
+                formControlName="studentmob"
+                placeholder="studentmobile"
+              />
+              <mat-error>
+                <small
+                  *ngIf="ContactInfo.get('studentmob')?.errors?.['touched']"
+                  class="warn"
+                >
+                  Student Contact No is mandatory
+                </small>
+              </mat-error>
+              <mat-error>
+                <small
+                  *ngIf="ContactInfo.get('studentmob')?.errors?.['pattern']"
+                  class="warn"
+                >
+                  Enter valid number
+                </small>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label for="email">Student Email</mat-label>
+              <input
+                type="email"
+                matInput
+                name="studentemail"
+                formControlName="studentemail"
+                placeholder="Email"
+              />
+              <mat-error>
+                <small
+                  *ngIf="ContactInfo.get('studentemail')?.errors?.['touched']"
+                  class="warn"
+                >
+                  Student Email is mandatory
+                </small>
+
+                <small
+                  *ngIf="ContactInfo.get('studentemail')?.errors?.['pattern']"
+                  class="warn"
+                >
+                  Enter valid email
+                </small>
+                <small
+                  *ngIf="ContactInfo.get('studentemail')?.errors?.['responseKo']"
+                  class="warn"
+                >
+                  Enter valid email
+                </small>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label>Father Contact</mat-label>
+              <input
+                matInput
+                type="tel"
+                name="fathercno"
+                formControlName="fathermob"
+                placeholder="Father contact No"
+              />
+              <mat-error>
+                <small
+                  *ngIf="ContactInfo.get('fathermob')?.errors?.['touched']"
+                  class="warn"
+                >
+                  Student Father contact No is mandatory
+                </small>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label for="citizen">Mother Contact</mat-label>
+              <input
+                matInput
+                type="tel"
+                name="mothercno"
+                formControlName="mothermob"
+                placeholder="Mother Contact No"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,304 @@
+<div>
+  <mat-horizontal-stepper linear #stepper>
+    <!-- <mat-step [stepControl]="StudentForm" [completed]="complete"> -->
+    <form [formGroup]="StudentForm" (ngSubmit)="saveInfo()">
+      <mat-step
+        [stepControl]="StudentForm.controls['basicInfo']"
+        state="information"
+      >
+        <ng-template matStepLabel>PersonalDetails</ng-template>
+        <app-basic-info FormGroupName="basicInfo"></app-basic-info>
+        <div class="footer">
+          <button
+            color="accent"
+            class="nextbtn"
+            mat-raised-button
+            matStepperNext
+            [disabled]="!StudentForm.get('basicInfo').valid"
+          >
+            Next
+          </button>
+        </div>
+      </mat-step>
+      <mat-step
+        [stepControl]="StudentForm.get('address')"
+        [completed]="StudentForm.get('address').valid"
+        state="add"
+      >
+        <ng-template matStepLabel>AddressDetails</ng-template>
+        <app-address FormGroupName="address"></app-address>
+        <div class="footer">
+          <button color="accent" mat-raised-button matStepperPrevious>
+            Back
+          </button>
+          <button
+            color="accent"
+            [disabled]="!StudentForm.get('address').valid"
+            mat-raised-button
+            matStepperNext
+          >
+            Next
+          </button>
+        </div>
+      </mat-step>
+      <mat-step
+        [stepControl]="StudentForm.get('contact')"
+        [completed]="StudentForm.get('contact').valid"
+        state="cont"
+      >
+        <ng-template matStepLabel>ContactDetails</ng-template>
+        <app-contacts FormGroupName="contact"></app-contacts>
+        <div class="footer">
+          <button matcolor="accent" mat-raised-button matStepperPrevious>
+            Back
+          </button>
+          <button
+            color="accent"
+            [disabled]="!StudentForm.get('contact').valid"
+            mat-raised-button
+            matStepperNext
+          >
+            Next
+          </button>
+        </div>
+      </mat-step>
+      <mat-step
+        [stepControl]="StudentForm.get('Educationdetails')"
+        [completed]="StudentForm.get('Educationdetails').valid"
+        state="edu"
+      >
+        <ng-template matStepLabel>Educationdetails</ng-template>
+        <app-education-info
+          FormGroupName="Educationdetails"
+        ></app-education-info>
+        <div class="footer">
+          <button color="accent" mat-raised-button matStepperPrevious>
+            Back
+          </button>
+          <button
+            mat-raised-button
+            type="submit"
+            [disabled]="!StudentForm.valid"
+            color="accent"
+            (click)="saveInfo()"
+          >
+            Save
+          </button>
+          <button
+            mat-raised-button
+            type="reset"
+            color="accent"
+            (click)="stepper.reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </mat-step>
+    </form>
+    <mat-step state="submit">
+      <ng-template matStepLabel>Submited Info</ng-template>
+      <div class="cards">
+        <mat-card class="card">
+          <mat-card-content>
+            <div>
+              <mat-icon class="icon">person</mat-icon>
+            </div>
+            <mat-card-title style="text-align: center"
+              >PersonalDetails</mat-card-title
+            >
+            <div class="col">
+              <label>
+                <span>Name </span>
+                <h4>
+                  :{{ StudentForm.get("basicInfo").get("firstname").value }}
+                  {{ StudentForm.get("basicInfo").get("middelname").value }}
+                  {{ StudentForm.get("basicInfo").get("lastname").value }}
+                </h4></label
+              >
+              <label
+                ><span>Age</span>
+                <h4>
+                  :{{ StudentForm.get("basicInfo").get("age").value }}
+                </h4></label
+              ><label
+                ><span>Gender</span>
+                <h4>
+                  :{{ StudentForm.get("basicInfo").get("gender").value }}
+                </h4></label
+              ><label>
+                <span> BloodGroup </span>
+                <h4>
+                  :{{ StudentForm.get("basicInfo").get("bloodgrp").value }}
+                </h4>
+              </label>
+              <label
+                ><span>DOB</span>
+                <h4>
+                  :{{ StudentForm.get("basicInfo").get("dob").value }}
+                </h4></label
+              >
+              <label
+                ><span>Religion</span>
+                <h4>
+                  :{{ StudentForm.get("basicInfo").get("religion").value }}
+                </h4></label
+              >
+              <label>
+                <span> Citizen Of</span>
+                <h4>
+                  :{{ StudentForm.get("basicInfo").get("citizeof").value }}
+                </h4></label
+              >
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <div>
+            <mat-icon class="icon"> add_location</mat-icon>
+          </div>
+          <mat-card-title style="text-align: center"
+            >AddressDetails</mat-card-title
+          >
+          <mat-card-content>
+            <div class="col">
+              <label>
+                <span> Full Address </span>
+                <h4>:{{ StudentForm.get("address").get("fulladd").value }}</h4>
+              </label>
+              <label>
+                <span> PinCode </span>
+                <h4>:{{ StudentForm.get("address").get("pincode").value }}</h4>
+              </label>
+              <label>
+                <span> State </span>
+                <h4>:{{ StudentForm.get("address").get("state").value }}</h4>
+              </label>
+              <label>
+                <span>City </span>
+                <h4>:{{ StudentForm.get("address").get("CityTown").value }}</h4>
+              </label>
+              <label>
+                <span>Teshil </span>
+                <h4>:{{ StudentForm.get("address").get("Teshil").value }}</h4>
+              </label>
+              <label>
+                <span>District </span>
+                <h4>:{{ StudentForm.get("address").get("District").value }}</h4>
+              </label>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <div>
+            <mat-icon class="icon"> contacts</mat-icon>
+          </div>
+          <mat-card-title style="text-align: center"
+            >ContactDetails</mat-card-title
+          >
+          <mat-card-content>
+            <div class="col">
+              <label>
+                <span> Student Mobile No </span>
+                <h4>
+                  :{{ StudentForm.get("contact").get("studentmob").value }}
+                </h4>
+              </label>
+              <label>
+                <span> Student Email </span>
+                <h4>
+                  : {{ StudentForm.get("contact").get("studentemail").value }}
+                </h4>
+              </label>
+              <label>
+                <span> Father Moblie No </span>
+                <h4>
+                  : {{ StudentForm.get("contact").get("fathermob").value }}
+                </h4>
+              </label>
+              <label>
+                <span>Mother Moblie No </span>
+                <h4>
+                  : {{ StudentForm.get("contact").get("mothermob").value }}
+                </h4>
+              </label>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <div>
+            <mat-icon class="icon">library_books</mat-icon>
+          </div>
+          <mat-card-title style="text-align: center"
+            >Highest Qualification</mat-card-title
+          >
+          <mat-card-content>
+            <div class="col">
+              <label>
+                <span> Dgree </span>
+                <h4>
+                  :{{
+                    StudentForm.get("Educationdetails").get("nameofexam").value
+                  }}
+                </h4>
+              </label>
+              <label>
+                <span> Board/University </span>
+                <h4>
+                  :{{
+                    StudentForm.get("Educationdetails").get("nameofboarduni")
+                      .value
+                  }}
+                </h4>
+              </label>
+              <label>
+                <span> College/School </span>
+                <h4>
+                  :{{
+                    StudentForm.get("Educationdetails").get("nameofschcol")
+                      .value
+                  }}
+                </h4>
+              </label>
+              <label>
+                <span>Credits </span>
+                <h4>
+                  :{{ StudentForm.get("Educationdetails").get("credit").value }}
+                </h4>
+              </label>
+              <label>
+                <span>GPA </span>
+                <h4>
+                  :{{ StudentForm.get("Educationdetails").get("GPA").value }}
+                </h4>
+              </label>
+              <label>
+                <span>Marks Obtain </span>
+                <h4>
+                  :{{ StudentForm.get("Educationdetails").get("tmarks").value }}
+                </h4>
+              </label>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-step>
+    <ng-template matStepperIcon="information">
+      <mat-icon>person</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="add">
+      <mat-icon> place</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="cont">
+      <mat-icon> contacts</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="edu">
+      <mat-icon>library_books</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="submit">
+      <mat-icon>info</mat-icon>
+    </ng-template>
+  </mat-horizontal-stepper>
+</div>

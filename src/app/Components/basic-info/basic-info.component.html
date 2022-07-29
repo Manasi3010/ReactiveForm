@@ -1,0 +1,150 @@
+<mat-card style="width: 100%; text-align: center">
+  <mat-card-content>
+    <form [formGroup]="basicinfo">
+      <ng-container>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label>First Name</mat-label>
+              <input
+                type="text"
+                matInput
+                name="firstname"
+                formControlName="firstname"
+                placeholder="fristname"
+              />
+              <mat-error>
+                <small
+                  *ngIf="basicinfo.controls['firstname']?.errors?.['touched']"
+                  class="warn"
+                >
+                  FirstName is mandatory
+                </small>
+                <small
+                  *ngIf=" basicinfo.controls['firstname']?.errors?.['minlength'] && !basicinfo.controls['firstname']?.errors?.['onlywhitespace']"
+                  class="warn"
+                >
+                  FirstName must contain atleast 3 characters
+                </small>
+                <small
+                  *ngIf="basicinfo.controls['firstname']?.errors?.['onlywhitespace']"
+                  class="warn"
+                >
+                  Looks like you entered only spaces.
+                </small>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label for="middelname">Middel Name</mat-label>
+              <input
+                type="text"
+                matInput
+                name="middelname"
+                formControlName="middelname"
+                placeholder="middelname"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label for="lastname">Last Name</mat-label>
+              <input
+                matInput
+                type="text"
+                name="lastname"
+                formControlName="lastname"
+                placeholder="lastname"
+              />
+              <mat-error>
+                <small
+                  *ngIf="basicinfo.get('lastname')?.errors?.['touched']"
+                  class="warn"
+                >
+                  LastName is mandatory
+                </small>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label>DOB:</mat-label>
+              <input
+                matInput
+                type="date"
+                name="dob"
+                formControlName="dob"
+                placeholder="date of birth"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label for="gender">Gender</mat-label>
+              <input
+                matInput
+                type="text"
+                name="gender"
+                formControlName="gender"
+                placeholder="gender"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label for="bloofgrp">Blood Group</mat-label>
+              <input
+                matInput
+                type="text"
+                name="bloodgrp"
+                formControlName="bloodgrp"
+                placeholder="BloodGroup"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label>Age</mat-label>
+              <input
+                matInput
+                type="number"
+                name="age"
+                formControlName="age"
+                placeholder="Age"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label for="citizen">Citizen Of</mat-label>
+              <input
+                matInput
+                type="text"
+                name="citizeof"
+                formControlName="citizeof"
+                placeholder="Citizen of"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-label for="religion">Religion</mat-label>
+              <input
+                matInput
+                type="text"
+                name="religion"
+                formControlName="religion"
+                placeholder="religion"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+    </form>
+  </mat-card-content>
+</mat-card>
